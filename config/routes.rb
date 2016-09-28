@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root to: 'tasks#index'
 
   get 'tasks/index'
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'tasks/new'
 
   get 'tasks/show'
+
+  get 'tasks/:id/show' => 'tasks#show', as:'show'
 
   get 'tasks/update'
 
