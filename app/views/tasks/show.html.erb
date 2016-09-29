@@ -3,3 +3,6 @@
 <p>Description: <%= @mytask[:description] %></p>
 <p>Status: <%= @mytask[:status] %></p>
 <p>Completed at: <%= @mytask[:completed_at] %></p>
+<p><%= button_to "Delete Task", { action: "destroy", id: @mytask[:id]},
+                                    method: :delete, data: { confirm: "Are you sure?"} %>
+</p>

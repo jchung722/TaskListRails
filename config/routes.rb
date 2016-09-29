@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 
   get 'tasks/index'
 
-  get 'tasks/create'
+  post 'tasks/create' => 'tasks#create', as:'create'
 
-  get 'tasks/destroy'
+  delete 'tasks/destroy'
 
   get 'tasks/edit'
 
-  get 'tasks/new'
+  get 'tasks/new' => 'tasks#new', as:'new'
 
   get 'tasks/show'
 

@@ -1,4 +1,9 @@
 <h2>Task List</h2>
 <% @tasks.each do |task| %>
   <h3><%= link_to(task[:name], show_path(task[:id])) %></h3>
+  <p>
+    <%= button_to "Delete Task", { action: "destroy", id: task[:id]},
+                                  method: :delete, data: { confirm: "Are you sure?"} %>
+  </p>
 <% end %>
+  <p><%= link_to("add", new_path)%></p>

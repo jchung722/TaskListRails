@@ -1,33 +1,39 @@
 class TasksController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def index
     @tasks = Task.all
   end
 
   def create
+    @mytask = Task.new
+    @mytask.name = params[:task][:name]
+    @mytask.description = params[:task][:description]
+    @mytask.status = params[:task][:status]
+    @mytask.completed_at = params[:task][:completed_at]
+    @mytask.save
+    redirect_to action: 'index'
   end
 
   def destroy
+    @mytask = Task.find(params[:id])
+    @mytask.destroy
+    redirect_to action: 'index'
   end
 
   def edit
   end
 
   def new
+    @mytask = Task.new
   end
 
   def show
-    @tasks = Task.all
-    @mytask = nil
-
-    @tasks.each do |task|
-      num = params[:id].to_i
-      if task[:id] == num
-        @mytask = task
-      end
-    end
+    @mytask = Task.find(params[:id])
 
     if @mytask == nil
-      @mytask = {id: params[:id].to_i, name: "Did not find", description: "", status: "", completed_at: nil}
+      render :file => 'public/404.html',
+        :status => :not_found
     end
   end
 
