@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   patch 'tasks/:id/update' => 'tasks#update', as:'update'
 
+  patch 'tasks/:id/complete' => 'tasks#complete', as:'complete'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5,5 +5,13 @@
     <%= button_to "Delete Task", { action: "destroy", id: task[:id]},
                                   method: :delete, data: { confirm: "Are you sure?"} %>
   </p>
+  <p>
+    <% if task[:completed] == false %>
+      <%= button_to "Click If Complete", { action: "complete", id: task[:id]},
+                                  method: :patch %>
+    <% else %>
+      <%= "Mission accomplished on #{task[:completed_at]}" %>
+    <% end %>
+  </p>
 <% end %>
   <p><%= link_to("add", new_path)%></p>

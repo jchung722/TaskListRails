@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @mytask = Task.new
+    @mytask = Task.new(completed: false)
     @mytask.name = params[:task][:name]
     @mytask.description = params[:task][:description]
     @mytask.save
@@ -40,6 +40,11 @@ class TasksController < ApplicationController
   def update
     Task.update(params[:id], :name => params[:task][:name], :description => params[:task][:description])
     redirect_to show_path
+  end
+
+  def complete
+    Task.update(params[:id], :completed => true, :completed_at => Time.now)
+    redirect_to root_path
   end
 
 end

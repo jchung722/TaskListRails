@@ -1,11 +1,27 @@
 <h2>Task: <%= @mytask[:name] %></h2>
 
 <p>Description: <%= @mytask[:description] %></p>
-<p>Status: <%= @mytask[:status] %></p>
-<p>Completed at: <%= @mytask[:completed_at] %></p>
+
+<p>Completed?:
+  <% if @mytask[:completed] == true %>
+    <%= "yes!" %>
+  <% elsif @mytask[:completed] == false %>
+    <%= "no" %>
+  <% end %>
+</p>
+
+<p>Completed at:
+  <% if @mytask[:completed_at] == nil %>
+    <%= "n/a" %>
+  <% else %>
+    <%= @mytask[:completed_at] %>
+  <% end %>
+</p>
+
 <p><%= button_to "Delete Task", { action: "destroy", id: @mytask[:id]},
                                     method: :delete, data: { confirm: "Are you sure?"} %>
 </p>
+
 <p>
   <%= button_to "Edit", { action: 'edit', id: @mytask[:id]}, method: :get %>
 </p>
