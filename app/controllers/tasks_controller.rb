@@ -9,8 +9,6 @@ class TasksController < ApplicationController
     @mytask = Task.new
     @mytask.name = params[:task][:name]
     @mytask.description = params[:task][:description]
-    @mytask.status = params[:task][:status]
-    @mytask.completed_at = params[:task][:completed_at]
     @mytask.save
     redirect_to action: 'index'
   end
@@ -22,7 +20,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @mytask = Task.new
+    @mytask = Task.find(params[:id])
   end
 
   def new
@@ -36,9 +34,12 @@ class TasksController < ApplicationController
       render :file => 'public/404.html',
         :status => :not_found
     end
+
   end
 
   def update
+    Task.update(params[:id], :name => params[:task][:name], :description => params[:task][:description])
+    redirect_to show_path
   end
 
 end
