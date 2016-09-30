@@ -22,6 +22,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @mytask = Task.new
   end
 
   def new

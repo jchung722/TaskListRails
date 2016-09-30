@@ -6,3 +6,6 @@
 <p><%= button_to "Delete Task", { action: "destroy", id: @mytask[:id]},
                                     method: :delete, data: { confirm: "Are you sure?"} %>
 </p>
+<p>
+  <%= button_to "Edit", { action: "edit", id: @mytask[:id]}, method: :get %>
+</p>
