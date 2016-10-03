@@ -1,3 +1,13 @@
+### Jessica's Reflection:
+
+-What went well? : I think navigating and linking to the different routes went well.
+-What are you still working on understanding better? : I'm still working on writing efficient code, and also general layout (HTML/CSS). It was harder to identify objects in CSS when some objects seemed to be under labels that I didn't even know about. For example, it was hard to get buttons to be placed side by side when I couldn't track down what label the buttonw as under.
+-What did your chair pair do differently? : My chair pairs had great ideas for how to mark tasks incomplete (after they had been marked complete). This is something that I still need to add to my own app. Maya had a checkbox under her edit options, and Leah had a button that turned from complete to incomplete. I thought both were great ideas!
+
+
+
+
+
 # Task List Rails ✅
 We are going to build a Task List in Rails. This web application will enable us to keep track of list of tasks with the functionality to add, edit and remove tasks from a list.
 
