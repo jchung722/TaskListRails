@@ -1,6 +1,7 @@
 <h2>Add a New Task!</h2>
 
-  <%= form_for @mytask,
+<%= render partial: "form" %>
+  <!-- <%= form_for @mytask,
     url: create_path do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -9,4 +10,4 @@
     <%= f.text_field :description %>
 
     <%= f.submit %>
-  <% end %>
+  <% end %> -->

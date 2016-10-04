@@ -21,10 +21,12 @@ class TasksController < ApplicationController
 
   def edit
     @mytask = Task.find(params[:id])
+    @path = "update"
   end
 
   def new
     @mytask = Task.new
+    @path = "create"
   end
 
   def show
