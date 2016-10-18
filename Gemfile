@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'awesome_print'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
 # Use SCSS for stylesheets
@@ -36,6 +39,7 @@ group :development, :test do
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'dotenv-rails'
 end
 
 group :development do
