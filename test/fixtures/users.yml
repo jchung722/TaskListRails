@@ -1,12 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+ada:
+  id:
   uid: MyString
   name: MyString
   provider: MyString
   email: MyString
 
-two:
+babbage:
+  id:
   uid: MyString
   name: MyString
   provider: MyString
