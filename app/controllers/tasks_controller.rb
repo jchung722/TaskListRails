@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
   skip_before_filter :verify_authenticity_token
+  before_action :get_current_user
 
   def index
     # @user = User.find(session[:user_id])
     # @tasks = @user.tasks
     @tasks = Task.all
-    get_current_user
   end
 
   def create

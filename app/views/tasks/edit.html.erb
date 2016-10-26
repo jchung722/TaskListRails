@@ -1,3 +1,7 @@
-<h2>Edit</h2>
+<% if @user %>
+  <h2>Edit</h2>
 
-<%= render partial: "form" %>
+  <%= render partial: "form" %>
+<% else %>
+
+<% end %>
