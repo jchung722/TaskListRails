@@ -19,4 +19,22 @@ class UserTest < ActiveSupport::TestCase
     user.email = "jack@github.com"
     assert user.valid?
   end
+
+  test "A user without a uid field is invalid" do
+    user = User.new(name: "Jack", email: "jack@github.com", provider: "github")
+    assert_not user.valid?
+    user.uid = 12345
+    assert user.valid?
+  end
+
+  test "A user without a provider field is invalid" do
+    user = User.new(name: "Jack", email: "jack@github.com", uid: 123456)
+    assert_not user.valid?
+    user.provider = "github"
+    assert user.valid?
+  end
+
+  test "Ada has one task" do
+    assert_equal users(:ada).tasks.length, 1
+  end
 end
