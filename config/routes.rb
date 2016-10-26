@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
+  root to: 'tasks#index'
+
   #resources :sessions, :only => [:create]
   get '/auth/:provider/callback', to: 'sessions#create'
-
-  root to: 'tasks#index'
 
   resources :tasks
 
