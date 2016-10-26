@@ -2,6 +2,8 @@ class TasksController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
+    # @user = User.find(session[:user_id])
+    # @tasks = @user.tasks
     @tasks = Task.all
     get_current_user
   end
@@ -11,23 +13,21 @@ class TasksController < ApplicationController
     @mytask.name = params[:task][:name]
     @mytask.description = params[:task][:description]
     @mytask.save
-    redirect_to action: 'index'
+    redirect_to root_path
   end
 
   def destroy
     @mytask = Task.find(params[:id])
     @mytask.destroy
-    redirect_to action: 'index'
+    redirect_to root_path
   end
 
   def edit
     @mytask = Task.find(params[:id])
-    @path = "update"
   end
 
   def new
     @mytask = Task.new
-    @path = "create"
   end
 
   def show
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
   def update
     Task.update(params[:id], :name => params[:task][:name], :description => params[:task][:description])
-    redirect_to show_path
+    redirect_to task_path
   end
 
   def complete

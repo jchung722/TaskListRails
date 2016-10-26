@@ -9,6 +9,20 @@
 </head>
 <body>
 <h1><%= link_to "Get. Stuff. Done.", root_path %></h1>
+
+<div id="login">
+<% if @user %>
+  <%= button_to "Logout", session_delete_path(session[:user_id]), method: :delete %>
+<% else %>
+  <p>Log in through github to start making your list!</p>
+  <%= button_to "Github Login", "/auth/github" %>
+<% end %>
+</div>
+
+<% if flash[:notice] %>
+  <p class="flash-notice"><%= flash[:notice] %></p>
+<% end %>
+
 <%= yield %>
 
 <footer>

@@ -1,9 +1,9 @@
 <% if @user %>
   <h2>Task List</h2>
-    <p><%= link_to("Add a new mission", new_path)%></p>
+    <p><%= link_to("Add a new mission", new_task_path)%></p>
 
     <% @tasks.each do |task| %>
-      <h3><%= link_to(task[:name], show_path(task[:id])) %></h3>
+      <h3><%= link_to(task[:name], task_path(task[:id])) %></h3>
 
       <p class="button">
         <%= button_to "Abort/Clear Mission", { action: "destroy", id: task[:id]},
@@ -13,13 +13,12 @@
       <p class="button">
         <% if task[:completed] == false %>
           <%= button_to "Mission Accomplished", { action: "complete", id: task[:id]},
-                                      method: :patch %>
+                                        method: :patch %>
         <% else %>
           <%= "😘 Mission accomplished on #{task[:completed_at]}" %>
         <% end %>
       </p>
     <% end %>
 <% else %>
-  <p>Log in through github to start making your list!</p>
-  <%= link_to "Github Login", "/auth/github" %>
+  
 <% end %>
