@@ -3,7 +3,9 @@ class TasksController < ApplicationController
   before_action :get_current_user
 
   def index
-    @tasks = @user.tasks
+    if @user
+      @tasks = @user.tasks
+    ends
   end
 
   def create
