@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all
+    get_current_user
   end
 
   def create
@@ -47,6 +48,11 @@ class TasksController < ApplicationController
   def complete
     Task.update(params[:id], :completed => true, :completed_at => Time.now)
     redirect_to root_path
+  end
+
+  private
+  def get_current_user
+    @user = User.find_by(id: session[:user_id])
   end
 
 end
