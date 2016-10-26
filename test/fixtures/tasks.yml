@@ -4,10 +4,10 @@ adas_task:
   name: "Write the 1st Code!"
   description: "Fortran"
   user: :ada
-  completion: 2016-10-14
+  completed: false
 
 babbages_task:
   name: "Make the first Computer"
   description: "Build it!"
   user: :babbage
-  completion: false
+  completed: false
