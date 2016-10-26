@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   def index
     if @user
       @tasks = @user.tasks
-    ends
+    end
   end
 
   def create
