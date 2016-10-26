@@ -1,17 +1,24 @@
-<h2>Task List</h2>
-<% @tasks.each do |task| %>
-  <h3><%= link_to(task[:name], show_path(task[:id])) %></h3>
-  <p>
-    <%= button_to "Delete Task", { action: "destroy", id: task[:id]},
-                                  method: :delete, data: { confirm: "Are you sure?"} %>
-  </p>
-  <p>
-    <% if task[:completed] == false %>
-      <%= button_to "Click If Complete", { action: "complete", id: task[:id]},
-                                  method: :patch %>
-    <% else %>
-      <%= "Mission accomplished on #{task[:completed_at]}" %>
+<% if @user %>
+  <h2>Task List</h2>
+    <p><%= link_to("Add a new mission", new_task_path)%></p>
+
+    <% @tasks.each do |task| %>
+      <h3><%= link_to(task[:name], task_path(task[:id])) %></h3>
+
+      <p class="button">
+        <%= button_to "Abort/Clear Mission", { action: "destroy", id: task[:id]},
+                                      method: :delete, data: { confirm: "Are you sure?"} %>
+      </p>
+
+      <p class="button">
+        <% if task[:completed] == false %>
+          <%= button_to "Mission Accomplished", { action: "complete", id: task[:id]},
+                                        method: :patch %>
+        <% else %>
+          <%= "😘 Mission accomplished on #{task[:completed_at]}" %>
+        <% end %>
+      </p>
     <% end %>
-  </p>
+<% else %>
+  
 <% end %>
-  <p><%= link_to("add", new_path)%></p>

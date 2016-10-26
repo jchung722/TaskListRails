@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ada:
+  id:
+  uid: MyString
+  name: MyString
+  provider: MyString
+  email: MyString
+
+babbage:
+  id:
+  uid: MyString
+  name: MyString
+  provider: MyString
+  email: MyString

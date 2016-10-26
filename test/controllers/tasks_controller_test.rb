@@ -36,4 +36,22 @@ class TasksControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "Make sure a user can only see his/her tasks." do
+    session[:user_id]  = users(:ada).id
+    get :show, id: tasks(:adas_task).id
+
+    assert_response :success
+  end
+
+  test "Make sure a user cannot see another user's tasks." do
+    session[:user_id] = users(:babbage).id
+    get :show, id: tasks(:adas_task).id
+
+    assert_response :redirect
+    assert_equal flash[:notice], "You do not have access to that task."
+  end
+  #task migration so tasks have users and users have many tasks
+  #users can log in and track their on tasks
+  #practice writing basic tests
+
 end
