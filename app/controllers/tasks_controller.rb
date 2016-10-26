@@ -3,14 +3,13 @@ class TasksController < ApplicationController
   before_action :get_current_user
 
   def index
-    # @user = User.find(session[:user_id])
-    # @tasks = @user.tasks
-    @tasks = Task.all
+    @tasks = @user.tasks
   end
 
   def create
     @mytask = Task.new(completed: false)
     @mytask.name = params[:task][:name]
+    @mytask.user_id = session[:user_id]
     @mytask.description = params[:task][:description]
     @mytask.save
     redirect_to root_path
@@ -24,6 +23,9 @@ class TasksController < ApplicationController
 
   def edit
     @mytask = Task.find(params[:id])
+    if @mytask.user.id != session[:user_id]
+      redirect_to root_path
+    end
   end
 
   def new
@@ -32,12 +34,9 @@ class TasksController < ApplicationController
 
   def show
     @mytask = Task.find(params[:id])
-
-    if @mytask == nil
-      render :file => 'public/404.html',
-        :status => :not_found
+    if @mytask.user.id != session[:user_id]
+      redirect_to root_path
     end
-
   end
 
   def update
